@@ -1,12 +1,43 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, PanResponder, Animated } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { AntDesign } from "@expo/vector-icons";
 
 export default class CalendarScreen extends Component {
   state = {
     activeDate: new Date(),
+    pan: new Animated.ValueXY({ x: 0, y: 0 }),
+    views: [],
+    dropZoneValues: [],
   };
 
   componentDidMount() {}
+
+  panResponder = PanResponder.create({
+    onMoveShouldSetPanResponder: () => true,
+    // onPanResponderGrant: () => {
+    //   this.state.pan.setOffset({
+    //     x: this.state.pan.x.__getValue(),
+    //     y: this.state.pan.y.__getValue(),
+    //   });
+
+    //   this.state.pan.setValue({ x: 0, y: 0 });
+    // },
+
+    onPanResponderMove: Animated.event(
+      [null, { dx: this.state.pan.x, dy: this.state.pan.y }],
+      { useNativeDriver: false }
+    ),
+    onPanResponderRelease: () => {
+      Animated.spring(this.state.pan, {
+        toValue: { x: 0, y: 0 },
+        useNativeDriver: false,
+      }).start();
+      // this.state.pan.flattenOffset();
+      // console.log(this.state.pan);
+    },
+  });
+
   months = [
     "Styczeń",
     "Luty",
@@ -56,40 +87,54 @@ export default class CalendarScreen extends Component {
     return matrix;
   }
 
-  _onPress = (item) => {
+  _onPress = (item: any) => {
     this.setState(() => {
       if (!item.match && item != -1) {
         this.state.activeDate.setDate(item);
-        console.log(this.state.activeDate);
+        console.log(this.state.dropZoneValues);
         return this.state;
       }
     });
   };
 
   render() {
+    const panStyle = {
+      transform: this.state.pan.getTranslateTransform(),
+    };
+
     let matrix = this.generateMatrix();
     var rows = [];
-    rows = matrix.map((row, rowIndex) => {
-      var rowItems = row.map((item, colIndex) => {
+    rows = matrix.map((row: any, rowIndex: any) => {
+      var rowItems = row.map((item: any, colIndex: any) => {
         return (
-          <Text
+          <View
             key={colIndex}
             style={{
               flex: 1,
-              height: 18,
-              textAlign: "center",
-              // Highlight header
-              backgroundColor: rowIndex == 0 ? "#ddd" : "#fff",
-              // Highlight Sundays
-              color: colIndex == 6 ? "#a00" : "#000",
-              // Highlight current date
-              fontWeight:
-                item == this.state.activeDate.getDate() ? "bold" : "normal",
+              height: rowIndex == 0 ? 20 : 55,
+              borderWidth: 1,
             }}
-            onPress={() => this._onPress(item)}
           >
-            {item != -1 ? item : ""}
-          </Text>
+            <Text
+              key={colIndex}
+              style={{
+                flex: 1,
+                height: rowIndex == 0 ? 20 : 55,
+                borderWidth: 1,
+                textAlign: "center",
+                // Highlight header
+                backgroundColor: rowIndex == 0 ? "#ddd" : "#fff",
+                // Highlight Sundays
+                color: colIndex == 6 ? "#a00" : "#000",
+                // Highlight current date
+                fontWeight:
+                  item == this.state.activeDate.getDate() ? "bold" : "normal",
+              }}
+              onPress={() => this._onPress(item)}
+            >
+              {item != -1 ? item : ""}
+            </Text>
+          </View>
         );
       });
       return (
@@ -110,11 +155,27 @@ export default class CalendarScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.calendarContainer}>
-          {this.months[this.state.activeDate.getMonth()]} &nbsp;
-          {this.state.activeDate.getFullYear()}
-        </Text>
-        {rows}
+        <View style={styles.calendarContainer}>
+          <View style={styles.calendarHeader}>
+            <TouchableOpacity style={styles.calendarLeftCircle}>
+              <AntDesign name="leftcircleo" size={24} color="black" />
+            </TouchableOpacity>
+            <Text style={styles.calendarText}>
+              {this.months[this.state.activeDate.getMonth()]} &nbsp;
+              {this.state.activeDate.getFullYear()}
+            </Text>
+            <TouchableOpacity style={styles.calendarRightCircle}>
+              <AntDesign name="rightcircleo" size={24} color="black" />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.calendarRows}>
+            <Animated.View
+              {...this.panResponder.panHandlers}
+              style={[panStyle, styles.circle]}
+            />
+            {rows}
+          </View>
+        </View>
       </View>
     );
   }
@@ -128,8 +189,38 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   calendarContainer: {
+    top: 35,
+    width: "100%",
+  },
+  calendarHeader: {
+    top: 10,
+    flexDirection: "row",
+    height: 50,
+
+    justifyContent: "center",
+  },
+  calendarLeftCircle: {
+    width: 30,
+    right: 20,
+  },
+  calendarText: {
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 20,
     textAlign: "center",
+    alignSelf: "baseline",
+  },
+  calendarRightCircle: {
+    width: 30,
+    left: 20,
+  },
+  calendarRows: {
+    height: 500,
+  },
+  circle: {
+    backgroundColor: "skyblue",
+    width: 10 * 2,
+    height: 10 * 2,
+    borderRadius: 10,
+    position: "absolute",
   },
 });

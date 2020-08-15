@@ -89,19 +89,12 @@ class HomeScreen extends Component {
       });
   };
 
-  toggleSwitch = (value) => {
-    //onValueChange of the switch this function will be called
+  toggleSwitch = (value: any) => {
     this.turnOn();
     this.setState({ switchValue: value });
-
-    //state changes according to switch
-    //which will result in re-render the text
   };
 
   turnOn = () => {
-    // this.setState({ isFetching: true });
-    // this.setState({ image: 0 });
-
     return fetch("http://89.78.59.99//humidifier", {
       method: "POST",
       headers: {
