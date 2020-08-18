@@ -9,9 +9,13 @@ export default class CalendarScreen extends Component {
     pan: new Animated.ValueXY({ x: 0, y: 0 }),
     views: [],
     dropZoneValues: [],
+    colWidth: null,
+    isColWidth: false,
   };
 
   componentDidMount() {}
+
+  componentDidUpdate() {}
 
   panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: () => true,
@@ -29,6 +33,8 @@ export default class CalendarScreen extends Component {
       { useNativeDriver: false }
     ),
     onPanResponderRelease: () => {
+      console.log(this.state.pan);
+      this.checkBoundaries(this.state.pan.x._value, this.state.pan.y._value);
       Animated.spring(this.state.pan, {
         toValue: { x: 0, y: 0 },
         useNativeDriver: false,
@@ -87,11 +93,63 @@ export default class CalendarScreen extends Component {
     return matrix;
   }
 
+  setDropZoneValues(item: any, x: any, y: any, row: any) {
+    let newZone = {
+      item,
+      x,
+      y,
+      row,
+    };
+    this.setState({ dropZoneValues: [...this.state.dropZoneValues, newZone] });
+    this.setColWidth();
+  }
+
+  setColWidth() {
+    if (this.state.isColWidth == false) {
+      let lastEntry = { item: 0, x: 0 };
+      for (const entry of this.state.dropZoneValues) {
+        if (entry.row === 3) {
+          if (entry.item - lastEntry.item == 1) {
+            let colWidth = entry.x - lastEntry.x;
+            this.setState({ colWidth: colWidth, isColWidth: true });
+
+            break;
+          } else {
+            lastEntry = { item: entry.item, x: entry.x };
+          }
+        }
+      }
+    }
+  }
+
+  checkBoundaries(x, y) {
+    for (const zones of this.state.dropZoneValues) {
+      const newBoundaries = {
+        item: zones.item,
+        x1: zones.x,
+        x2: zones.x + this.state.colWidth,
+        y1: zones.y + 70 * zones.row,
+        y2: zones.y + 70 * zones.row + 70,
+        row: zones.row,
+      };
+      console.log(Math.abs(-500 - y));
+      if (
+        Math.abs(-200 - x) > newBoundaries.x1 &&
+        Math.abs(-200 - x) < newBoundaries.x2 &&
+        Math.abs(-500 - y) > newBoundaries.y1 &&
+        Math.abs(-500 - y) < newBoundaries.y2
+      ) {
+        this._onPress(newBoundaries.item);
+      } else {
+      }
+    }
+  }
+
   _onPress = (item: any) => {
     this.setState(() => {
       if (!item.match && item != -1) {
         this.state.activeDate.setDate(item);
-        console.log(this.state.dropZoneValues);
+
         return this.state;
       }
     });
@@ -109,9 +167,15 @@ export default class CalendarScreen extends Component {
         return (
           <View
             key={colIndex}
+            onLayout={(e) => {
+              let layout = e.nativeEvent.layout;
+              rowIndex != 0 && item != -1
+                ? this.setDropZoneValues(item, layout.x, layout.y, rowIndex)
+                : null;
+            }}
             style={{
               flex: 1,
-              height: rowIndex == 0 ? 20 : 55,
+              height: rowIndex == 0 ? 20 : 70,
               borderWidth: 1,
             }}
           >
@@ -119,8 +183,8 @@ export default class CalendarScreen extends Component {
               key={colIndex}
               style={{
                 flex: 1,
-                height: rowIndex == 0 ? 20 : 55,
-                borderWidth: 1,
+                height: rowIndex == 0 ? 20 : 70,
+
                 textAlign: "center",
                 // Highlight header
                 backgroundColor: rowIndex == 0 ? "#ddd" : "#fff",
@@ -169,11 +233,11 @@ export default class CalendarScreen extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.calendarRows}>
+            {rows}
             <Animated.View
               {...this.panResponder.panHandlers}
               style={[panStyle, styles.circle]}
             />
-            {rows}
           </View>
         </View>
       </View>
@@ -218,9 +282,11 @@ const styles = StyleSheet.create({
   },
   circle: {
     backgroundColor: "skyblue",
-    width: 10 * 2,
-    height: 10 * 2,
-    borderRadius: 10,
+    width: 25 * 2,
+    height: 25 * 2,
+    borderRadius: 25,
     position: "absolute",
+    top: 500,
+    left: 200,
   },
 });
