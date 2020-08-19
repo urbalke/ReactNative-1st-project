@@ -13,6 +13,10 @@ export default class CalendarScreen extends Component {
     isColWidth: false,
   };
 
+  test() {
+    return 1;
+  }
+
   componentDidMount() {}
 
   componentDidUpdate() {}

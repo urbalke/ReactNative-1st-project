@@ -1,0 +1,1490 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CalendarScreenTest renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignContent": "center",
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "top": 35,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "height": 50,
+          "justifyContent": "center",
+          "top": 10,
+        }
+      }
+    >
+      <RNGestureHandlerButton
+        collapsable={false}
+        onGestureEvent={[Function]}
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
+        onHandlerStateChange={[Function]}
+        rippleColor={0}
+      >
+        <View
+          accessible={true}
+          style={
+            Object {
+              "opacity": 1,
+              "right": 20,
+              "width": 30,
+            }
+          }
+        >
+          <Text />
+        </View>
+      </RNGestureHandlerButton>
+      <Text
+        style={
+          Object {
+            "alignSelf": "baseline",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "textAlign": "center",
+          }
+        }
+      >
+        Sierpień
+          
+        2020
+      </Text>
+      <RNGestureHandlerButton
+        collapsable={false}
+        onGestureEvent={[Function]}
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
+        onHandlerStateChange={[Function]}
+        rippleColor={0}
+      >
+        <View
+          accessible={true}
+          style={
+            Object {
+              "left": 20,
+              "opacity": 1,
+              "width": 30,
+            }
+          }
+        >
+          <Text />
+        </View>
+      </RNGestureHandlerButton>
+    </View>
+    <View
+      style={
+        Object {
+          "height": 500,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "padding": 15,
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 20,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ddd",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 20,
+                "textAlign": "center",
+              }
+            }
+          >
+            Pon
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 20,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ddd",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 20,
+                "textAlign": "center",
+              }
+            }
+          >
+            Wt
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 20,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ddd",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 20,
+                "textAlign": "center",
+              }
+            }
+          >
+            Śr
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 20,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ddd",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 20,
+                "textAlign": "center",
+              }
+            }
+          >
+            Czw
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 20,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ddd",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 20,
+                "textAlign": "center",
+              }
+            }
+          >
+            Pt
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 20,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ddd",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 20,
+                "textAlign": "center",
+              }
+            }
+          >
+            Sb
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 20,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#ddd",
+                "color": "#a00",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 20,
+                "textAlign": "center",
+              }
+            }
+          >
+            Nd
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "padding": 15,
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            1
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#a00",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "padding": 15,
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            3
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            5
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            6
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            7
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#a00",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            9
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "padding": 15,
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            10
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            11
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            12
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            13
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            14
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            15
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#a00",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            16
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "padding": 15,
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            17
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            18
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "bold",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            19
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            20
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            21
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            22
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#a00",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            23
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "padding": 15,
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            24
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            25
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            26
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            27
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            28
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            29
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#a00",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            30
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-around",
+            "padding": 15,
+          }
+        }
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            31
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#000",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={
+            Object {
+              "borderWidth": 1,
+              "flex": 1,
+              "height": 70,
+            }
+          }
+        >
+          <Text
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "color": "#a00",
+                "flex": 1,
+                "fontWeight": "normal",
+                "height": 70,
+                "textAlign": "center",
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+      </View>
+      <View
+        onMoveShouldSetResponder={[Function]}
+        onMoveShouldSetResponderCapture={[Function]}
+        onResponderEnd={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderReject={[Function]}
+        onResponderRelease={[Function]}
+        onResponderStart={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        onStartShouldSetResponderCapture={[Function]}
+        style={
+          Object {
+            "backgroundColor": "skyblue",
+            "borderRadius": 25,
+            "height": 50,
+            "left": 200,
+            "position": "absolute",
+            "top": 500,
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+              Object {
+                "translateY": 0,
+              },
+            ],
+            "width": 50,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
