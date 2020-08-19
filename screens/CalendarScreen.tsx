@@ -2,51 +2,21 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, PanResponder, Animated } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
+import Draggable1 from "../components/Draggable1";
+import Draggable2 from "../components/Draggable2";
 
 export default class CalendarScreen extends Component {
   state = {
     activeDate: new Date(),
-    pan: new Animated.ValueXY({ x: 0, y: 0 }),
     views: [],
     dropZoneValues: [],
     colWidth: null,
     isColWidth: false,
   };
 
-  test() {
-    return 1;
-  }
-
   componentDidMount() {}
 
   componentDidUpdate() {}
-
-  panResponder = PanResponder.create({
-    onMoveShouldSetPanResponder: () => true,
-    // onPanResponderGrant: () => {
-    //   this.state.pan.setOffset({
-    //     x: this.state.pan.x.__getValue(),
-    //     y: this.state.pan.y.__getValue(),
-    //   });
-
-    //   this.state.pan.setValue({ x: 0, y: 0 });
-    // },
-
-    onPanResponderMove: Animated.event(
-      [null, { dx: this.state.pan.x, dy: this.state.pan.y }],
-      { useNativeDriver: false }
-    ),
-    onPanResponderRelease: () => {
-      console.log(this.state.pan);
-      this.checkBoundaries(this.state.pan.x._value, this.state.pan.y._value);
-      Animated.spring(this.state.pan, {
-        toValue: { x: 0, y: 0 },
-        useNativeDriver: false,
-      }).start();
-      // this.state.pan.flattenOffset();
-      // console.log(this.state.pan);
-    },
-  });
 
   months = [
     "Styczeń",
@@ -126,7 +96,7 @@ export default class CalendarScreen extends Component {
     }
   }
 
-  checkBoundaries(x, y) {
+  checkBoundaries(x, y, id) {
     for (const zones of this.state.dropZoneValues) {
       const newBoundaries = {
         item: zones.item,
@@ -136,23 +106,32 @@ export default class CalendarScreen extends Component {
         y2: zones.y + 70 * zones.row + 70,
         row: zones.row,
       };
-      console.log(Math.abs(-500 - y));
+
       if (
+        id == 1 &&
         Math.abs(-200 - x) > newBoundaries.x1 &&
         Math.abs(-200 - x) < newBoundaries.x2 &&
-        Math.abs(-500 - y) > newBoundaries.y1 &&
-        Math.abs(-500 - y) < newBoundaries.y2
+        Math.abs(-520 - y) > newBoundaries.y1 &&
+        Math.abs(-520 - y) < newBoundaries.y2
       ) {
-        this._onPress(newBoundaries.item);
-      } else {
+        this._onPress(newBoundaries.item, id);
+      } else if (
+        id == 2 &&
+        Math.abs(-300 - x) > newBoundaries.x1 &&
+        Math.abs(-300 - x) < newBoundaries.x2 &&
+        Math.abs(-520 - y) > newBoundaries.y1 &&
+        Math.abs(-520 - y) < newBoundaries.y2
+      ) {
+        this._onPress(newBoundaries.item, id);
       }
     }
   }
 
-  _onPress = (item: any) => {
+  _onPress = (item: any, id?: number) => {
     this.setState(() => {
       if (!item.match && item != -1) {
         this.state.activeDate.setDate(item);
+        console.log(id);
 
         return this.state;
       }
@@ -160,10 +139,6 @@ export default class CalendarScreen extends Component {
   };
 
   render() {
-    const panStyle = {
-      transform: this.state.pan.getTranslateTransform(),
-    };
-
     let matrix = this.generateMatrix();
     var rows = [];
     rows = matrix.map((row: any, rowIndex: any) => {
@@ -238,10 +213,13 @@ export default class CalendarScreen extends Component {
           </View>
           <View style={styles.calendarRows}>
             {rows}
-            <Animated.View
+            {/* <Animated.View
               {...this.panResponder.panHandlers}
               style={[panStyle, styles.circle]}
-            />
+            /> */}
+
+            <Draggable1 func={(x, y, id) => this.checkBoundaries(x, y, id)} />
+            <Draggable2 func={(x, y, id) => this.checkBoundaries(x, y, id)} />
           </View>
         </View>
       </View>
@@ -292,5 +270,23 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 500,
     left: 200,
+  },
+  circle2: {
+    backgroundColor: "yellow",
+    width: 25 * 2,
+    height: 25 * 2,
+    borderRadius: 25,
+    position: "absolute",
+    top: 500,
+    left: 100,
+  },
+  circle3: {
+    backgroundColor: "red",
+    width: 25 * 2,
+    height: 25 * 2,
+    borderRadius: 25,
+    position: "absolute",
+    top: 500,
+    left: 300,
   },
 });
