@@ -1,6 +1,11 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, PanResponder, Animated } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableHighlight,
+  TouchableOpacity,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Draggable1 from "../components/Draggable1";
 import Draggable2 from "../components/Draggable2";
@@ -8,10 +13,10 @@ import Draggable2 from "../components/Draggable2";
 export default class CalendarScreen extends Component {
   state = {
     activeDate: new Date(),
-    views: [],
     dropZoneValues: [],
     colWidth: null,
     isColWidth: false,
+    dateStates: [],
   };
 
   componentDidMount() {}
@@ -96,7 +101,7 @@ export default class CalendarScreen extends Component {
     }
   }
 
-  checkBoundaries(x, y, id) {
+  checkBoundaries(x: any, y: any, id: any) {
     for (const zones of this.state.dropZoneValues) {
       const newBoundaries = {
         item: zones.item,
@@ -131,10 +136,43 @@ export default class CalendarScreen extends Component {
     this.setState(() => {
       if (!item.match && item != -1) {
         this.state.activeDate.setDate(item);
-        console.log(id);
+        if (id != undefined) {
+          let year = this.state.activeDate.getFullYear();
+          let month = this.state.activeDate.getMonth();
 
+          let dayId = new Date(year, month, item);
+
+          if (id == 1) {
+            console.log("ok");
+            this.setState({
+              dateStates: [
+                ...this.state.dateStates,
+                { id: dayId, value1: true },
+              ],
+            });
+          } else if (id == 2) {
+            console.log("ok2");
+            this.setState({
+              dateStates: {
+                id: dayId,
+                toRender: {
+                  Value2: true,
+                },
+              },
+            });
+          }
+        } else {
+          console.log(this.state.dateStates);
+        }
         return this.state;
       }
+    });
+  };
+
+  changeMonth = (val: number) => {
+    this.setState(() => {
+      this.state.activeDate.setMonth(this.state.activeDate.getMonth() + val);
+      return this.state;
     });
   };
 
@@ -143,6 +181,11 @@ export default class CalendarScreen extends Component {
     var rows = [];
     rows = matrix.map((row: any, rowIndex: any) => {
       var rowItems = row.map((item: any, colIndex: any) => {
+        let year = this.state.activeDate.getFullYear();
+        let month = this.state.activeDate.getMonth();
+
+        let dayId = new Date(year, month, item);
+
         return (
           <View
             key={colIndex}
@@ -176,6 +219,7 @@ export default class CalendarScreen extends Component {
               onPress={() => this._onPress(item)}
             >
               {item != -1 ? item : ""}
+              {}
             </Text>
           </View>
         );
@@ -200,15 +244,36 @@ export default class CalendarScreen extends Component {
       <View style={styles.container}>
         <View style={styles.calendarContainer}>
           <View style={styles.calendarHeader}>
-            <TouchableOpacity style={styles.calendarLeftCircle}>
-              <AntDesign name="leftcircleo" size={24} color="black" />
+            <TouchableOpacity
+              style={styles.calendarLeftCircle}
+              onPress={() => this.changeMonth(-1)}
+            >
+              <View>
+                <AntDesign
+                  name="leftcircleo"
+                  size={24}
+                  color="black"
+                  style={{ elevation: -1 }}
+                />
+              </View>
             </TouchableOpacity>
+
             <Text style={styles.calendarText}>
               {this.months[this.state.activeDate.getMonth()]} &nbsp;
               {this.state.activeDate.getFullYear()}
             </Text>
-            <TouchableOpacity style={styles.calendarRightCircle}>
-              <AntDesign name="rightcircleo" size={24} color="black" />
+            <TouchableOpacity
+              style={styles.calendarRightCircle}
+              onPress={() => this.changeMonth(+1)}
+            >
+              <View>
+                <AntDesign
+                  name="rightcircleo"
+                  size={24}
+                  color="black"
+                  style={{ elevation: -1 }}
+                />
+              </View>
             </TouchableOpacity>
           </View>
           <View style={styles.calendarRows}>
@@ -248,6 +313,7 @@ const styles = StyleSheet.create({
   calendarLeftCircle: {
     width: 30,
     right: 20,
+    elevation: 33,
   },
   calendarText: {
     fontWeight: "bold",
@@ -258,6 +324,7 @@ const styles = StyleSheet.create({
   calendarRightCircle: {
     width: 30,
     left: 20,
+    elevation: 33,
   },
   calendarRows: {
     height: 500,
