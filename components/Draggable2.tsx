@@ -18,6 +18,7 @@ export default class Draggable2 extends Component {
       this.checkBoundaries(this.state.pan.x._value, this.state.pan.y._value, 2);
       Animated.spring(this.state.pan, {
         toValue: { x: 0, y: 0 },
+        speed: 1000,
         useNativeDriver: false,
       }).start();
     },

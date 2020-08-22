@@ -232,7 +232,7 @@ export default class CalendarScreen extends Component {
             style={{
               flex: 1,
               height: rowIndex == 0 ? 20 : 70,
-              borderWidth: 1,
+              borderWidth: 0,
             }}
           >
             <Text
@@ -393,8 +393,7 @@ const styles = StyleSheet.create({
   },
   image1: {
     backgroundColor: "red",
-    flex: 1,
-    position: "relative",
     alignSelf: "center",
+    flex: 2,
   },
 });
