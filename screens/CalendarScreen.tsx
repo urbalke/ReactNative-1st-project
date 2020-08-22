@@ -141,25 +141,56 @@ export default class CalendarScreen extends Component {
           let month = this.state.activeDate.getMonth();
 
           let dayId = new Date(year, month, item);
-
+          let itemIndex = this.state.dateStates.findIndex((obj) => {
+            return obj.id === dayId.toString();
+          });
           if (id == 1) {
-            console.log("ok");
-            this.setState({
-              dateStates: [
-                ...this.state.dateStates,
-                { id: dayId, value1: true },
-              ],
-            });
+            if (itemIndex === -1) {
+              console.log("undefined");
+              this.setState({
+                dateStates: [
+                  ...this.state.dateStates,
+                  {
+                    id: dayId.toString(),
+                    value1: true,
+                  },
+                ],
+              });
+            } else {
+              console.log("trying to update");
+
+              let newArray = [...this.state.dateStates];
+              newArray[itemIndex] = {
+                ...newArray[itemIndex],
+                value1: true,
+              };
+              this.setState({ dateStates: newArray });
+            }
           } else if (id == 2) {
             console.log("ok2");
-            this.setState({
-              dateStates: {
-                id: dayId,
-                toRender: {
-                  Value2: true,
-                },
-              },
-            });
+
+            console.log(itemIndex);
+            if (itemIndex === -1) {
+              console.log("undefined");
+              this.setState({
+                dateStates: [
+                  ...this.state.dateStates,
+                  {
+                    id: dayId.toString(),
+                    Value2: true,
+                  },
+                ],
+              });
+            } else {
+              console.log("trying to update");
+
+              let newArray = [...this.state.dateStates];
+              newArray[itemIndex] = {
+                ...newArray[itemIndex],
+                value2: true,
+              };
+              this.setState({ dateStates: newArray });
+            }
           }
         } else {
           console.log(this.state.dateStates);
@@ -185,6 +216,9 @@ export default class CalendarScreen extends Component {
         let month = this.state.activeDate.getMonth();
 
         let dayId = new Date(year, month, item);
+        let dateState = this.state.dateStates.find((obj) => {
+          return obj.id === dayId.toString();
+        });
 
         return (
           <View
@@ -205,7 +239,6 @@ export default class CalendarScreen extends Component {
               key={colIndex}
               style={{
                 flex: 1,
-                height: rowIndex == 0 ? 20 : 70,
 
                 textAlign: "center",
                 // Highlight header
@@ -219,8 +252,10 @@ export default class CalendarScreen extends Component {
               onPress={() => this._onPress(item)}
             >
               {item != -1 ? item : ""}
-              {}
             </Text>
+            {dateState == undefined ? null : dateState.value1 == true ? (
+              <Text style={styles.image1}>okokok</Text>
+            ) : null}
           </View>
         );
       });
@@ -355,5 +390,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 500,
     left: 300,
+  },
+  image1: {
+    backgroundColor: "red",
+    flex: 1,
+    position: "relative",
+    alignSelf: "center",
   },
 });
