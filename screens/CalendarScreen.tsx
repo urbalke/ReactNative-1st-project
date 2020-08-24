@@ -5,10 +5,15 @@ import {
   StyleSheet,
   TouchableHighlight,
   TouchableOpacity,
+  Image,
+  TouchableWithoutFeedback,
 } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
+
 import { AntDesign } from "@expo/vector-icons";
 import Draggable1 from "../components/Draggable1";
 import Draggable2 from "../components/Draggable2";
+import Draggable3 from "../components/Draggable3";
 
 export default class CalendarScreen extends Component {
   state = {
@@ -19,9 +24,13 @@ export default class CalendarScreen extends Component {
     dateStates: [],
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.getData();
+  }
 
-  componentDidUpdate() {}
+  componentDidUpdate() {
+    this.storeData();
+  }
 
   months = [
     "Styczeń",
@@ -39,6 +48,26 @@ export default class CalendarScreen extends Component {
   ];
   weekDays = ["Pon", "Wt", "Śr", "Czw", "Pt", "Sb", "Nd"];
   nDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  storeData = async () => {
+    try {
+      const jsonValue = JSON.stringify(this.state.dateStates);
+      await AsyncStorage.setItem("@data", jsonValue);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("@data");
+      return jsonValue != null
+        ? this.setState({ dateStates: JSON.parse(jsonValue) })
+        : null;
+    } catch (e) {
+      // error reading value
+    }
+  };
 
   generateMatrix() {
     let matrix: any = [];
@@ -114,6 +143,14 @@ export default class CalendarScreen extends Component {
 
       if (
         id == 1 &&
+        Math.abs(-100 - x) > newBoundaries.x1 &&
+        Math.abs(-100 - x) < newBoundaries.x2 &&
+        Math.abs(-520 - y) > newBoundaries.y1 &&
+        Math.abs(-520 - y) < newBoundaries.y2
+      ) {
+        this._onPress(newBoundaries.item, id);
+      } else if (
+        id == 2 &&
         Math.abs(-200 - x) > newBoundaries.x1 &&
         Math.abs(-200 - x) < newBoundaries.x2 &&
         Math.abs(-520 - y) > newBoundaries.y1 &&
@@ -121,7 +158,7 @@ export default class CalendarScreen extends Component {
       ) {
         this._onPress(newBoundaries.item, id);
       } else if (
-        id == 2 &&
+        id == 3 &&
         Math.abs(-300 - x) > newBoundaries.x1 &&
         Math.abs(-300 - x) < newBoundaries.x2 &&
         Math.abs(-520 - y) > newBoundaries.y1 &&
@@ -146,7 +183,6 @@ export default class CalendarScreen extends Component {
           });
           if (id == 1) {
             if (itemIndex === -1) {
-              console.log("undefined");
               this.setState({
                 dateStates: [
                   ...this.state.dateStates,
@@ -157,8 +193,6 @@ export default class CalendarScreen extends Component {
                 ],
               });
             } else {
-              console.log("trying to update");
-
               let newArray = [...this.state.dateStates];
               newArray[itemIndex] = {
                 ...newArray[itemIndex],
@@ -167,23 +201,17 @@ export default class CalendarScreen extends Component {
               this.setState({ dateStates: newArray });
             }
           } else if (id == 2) {
-            console.log("ok2");
-
-            console.log(itemIndex);
             if (itemIndex === -1) {
-              console.log("undefined");
               this.setState({
                 dateStates: [
                   ...this.state.dateStates,
                   {
                     id: dayId.toString(),
-                    Value2: true,
+                    value2: true,
                   },
                 ],
               });
             } else {
-              console.log("trying to update");
-
               let newArray = [...this.state.dateStates];
               newArray[itemIndex] = {
                 ...newArray[itemIndex],
@@ -191,14 +219,61 @@ export default class CalendarScreen extends Component {
               };
               this.setState({ dateStates: newArray });
             }
+          } else if (id == 3) {
+            if (itemIndex === -1) {
+              this.setState({
+                dateStates: [
+                  ...this.state.dateStates,
+                  {
+                    id: dayId.toString(),
+                    value3: true,
+                  },
+                ],
+              });
+            } else {
+              let newArray = [...this.state.dateStates];
+              newArray[itemIndex] = {
+                ...newArray[itemIndex],
+                value3: true,
+              };
+              this.setState({ dateStates: newArray });
+            }
           }
         } else {
-          console.log(this.state.dateStates);
+          null;
         }
         return this.state;
       }
     });
   };
+
+  removeDateState(id, dayId) {
+    let itemIndex = this.state.dateStates.findIndex((obj) => {
+      return obj.id === dayId;
+    });
+    if (id === 1) {
+      let newArray = [...this.state.dateStates];
+      newArray[itemIndex] = {
+        ...newArray[itemIndex],
+        value1: false,
+      };
+      this.setState({ dateStates: newArray });
+    } else if (id == 2) {
+      let newArray = [...this.state.dateStates];
+      newArray[itemIndex] = {
+        ...newArray[itemIndex],
+        value2: false,
+      };
+      this.setState({ dateStates: newArray });
+    } else if (id == 3) {
+      let newArray = [...this.state.dateStates];
+      newArray[itemIndex] = {
+        ...newArray[itemIndex],
+        value3: false,
+      };
+      this.setState({ dateStates: newArray });
+    }
+  }
 
   changeMonth = (val: number) => {
     this.setState(() => {
@@ -215,9 +290,9 @@ export default class CalendarScreen extends Component {
         let year = this.state.activeDate.getFullYear();
         let month = this.state.activeDate.getMonth();
 
-        let dayId = new Date(year, month, item);
+        let dayId = new Date(year, month, item).toString();
         let dateState = this.state.dateStates.find((obj) => {
-          return obj.id === dayId.toString();
+          return obj.id === dayId;
         });
 
         return (
@@ -231,7 +306,7 @@ export default class CalendarScreen extends Component {
             }}
             style={{
               flex: 1,
-              height: rowIndex == 0 ? 20 : 70,
+              height: rowIndex == 0 ? 35 : 70,
               borderWidth: 0,
             }}
           >
@@ -242,7 +317,7 @@ export default class CalendarScreen extends Component {
 
                 textAlign: "center",
                 // Highlight header
-                backgroundColor: rowIndex == 0 ? "#ddd" : "#fff",
+                backgroundColor: rowIndex == 0 ? "#ddd" : "#f3fab6",
                 // Highlight Sundays
                 color: colIndex == 6 ? "#a00" : "#000",
                 // Highlight current date
@@ -253,9 +328,44 @@ export default class CalendarScreen extends Component {
             >
               {item != -1 ? item : ""}
             </Text>
-            {dateState == undefined ? null : dateState.value1 == true ? (
-              <Text style={styles.image1}>okokok</Text>
-            ) : null}
+            <View style={styles.imagesContainer}>
+              {dateState == undefined ? null : dateState.value1 == true ? (
+                <TouchableWithoutFeedback
+                  onPress={() => this.removeDateState(1, dayId)}
+                >
+                  <View>
+                    <Image
+                      style={styles.image1}
+                      source={require("../assets/images/watering-can.png")}
+                    />
+                  </View>
+                </TouchableWithoutFeedback>
+              ) : null}
+              {dateState == undefined ? null : dateState.value2 == true ? (
+                <TouchableWithoutFeedback
+                  onPress={() => this.removeDateState(2, dayId)}
+                >
+                  <View>
+                    <Image
+                      style={styles.image1}
+                      source={require("../assets/images/fertilizer.png")}
+                    />
+                  </View>
+                </TouchableWithoutFeedback>
+              ) : null}
+              {dateState == undefined ? null : dateState.value3 == true ? (
+                <TouchableWithoutFeedback
+                  onPress={() => this.removeDateState(3, dayId)}
+                >
+                  <View>
+                    <Image
+                      style={styles.image1}
+                      source={require("../assets/images/fertilizer2.png")}
+                    />
+                  </View>
+                </TouchableWithoutFeedback>
+              ) : null}
+            </View>
           </View>
         );
       });
@@ -320,6 +430,7 @@ export default class CalendarScreen extends Component {
 
             <Draggable1 func={(x, y, id) => this.checkBoundaries(x, y, id)} />
             <Draggable2 func={(x, y, id) => this.checkBoundaries(x, y, id)} />
+            <Draggable3 func={(x, y, id) => this.checkBoundaries(x, y, id)} />
           </View>
         </View>
       </View>
@@ -332,7 +443,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: "#f3fab6",
   },
   calendarContainer: {
     top: 35,
@@ -364,36 +475,14 @@ const styles = StyleSheet.create({
   calendarRows: {
     height: 500,
   },
-  circle: {
-    backgroundColor: "skyblue",
-    width: 25 * 2,
-    height: 25 * 2,
-    borderRadius: 25,
-    position: "absolute",
-    top: 500,
-    left: 200,
-  },
-  circle2: {
-    backgroundColor: "yellow",
-    width: 25 * 2,
-    height: 25 * 2,
-    borderRadius: 25,
-    position: "absolute",
-    top: 500,
-    left: 100,
-  },
-  circle3: {
-    backgroundColor: "red",
-    width: 25 * 2,
-    height: 25 * 2,
-    borderRadius: 25,
-    position: "absolute",
-    top: 500,
-    left: 300,
+  imagesContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    flexGrow: 1,
   },
   image1: {
-    backgroundColor: "red",
     alignSelf: "center",
-    flex: 2,
+    height: 18,
+    width: 18,
   },
 });

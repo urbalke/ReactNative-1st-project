@@ -30,7 +30,8 @@ export default class Draggable1 extends Component {
       transform: this.state.pan.getTranslateTransform(),
     };
     return (
-      <Animated.View
+      <Animated.Image
+        source={require("../assets/images/watering-can.png")}
         {...this.panResponder.panHandlers}
         style={[panStyle, styles.circle]}
       />
@@ -40,12 +41,11 @@ export default class Draggable1 extends Component {
 
 const styles = StyleSheet.create({
   circle: {
-    backgroundColor: "skyblue",
-    width: 25 * 2,
-    height: 25 * 2,
-    borderRadius: 25,
+    width: 50,
+    height: 50,
+    // borderRadius: 25,
     position: "absolute",
     top: 520,
-    left: 200,
+    left: 100,
   },
 });
